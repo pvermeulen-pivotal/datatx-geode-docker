@@ -1,0 +1,7 @@
+# This assumes using cluster configuration
+start locator --name=locator1
+configure pdx --read-serialized=true
+start server --name=server1 --server-port=40404 --locators=localhost[10334]
+start server --name=server2 --server-port=40405 --locators=localhost[10334]
+create region --name=TestPartition --type=PARTITION --redundant-copies=1 
+create region --name=TestReplicate --type=REPLICATE 
